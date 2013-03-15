@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  <add-on>
+    <add_on_products config:type="list">
+      <listentry>
+        <media_url>http://download.opensuse.org/update/12.3/</media_url>
+        <product>openSUSE-12.3-Update</product>
+        <product_dir>/</product_dir>
+      </listentry>
+    </add_on_products>
+  </add-on>
+  <deploy_image>
+    <image_installation config:type="boolean">false</image_installation>
+  </deploy_image>
+  <firewall>
+    <FW_DEV_DMZ></FW_DEV_DMZ>
+    <FW_DEV_EXT></FW_DEV_EXT>
+    <FW_DEV_INT></FW_DEV_INT>
+    <enable_firewall config:type="boolean">true</enable_firewall>
+    <start_firewall config:type="boolean">true</start_firewall>
+    <firewall_enable_ssh config:type="boolean">true</firewall_enable_ssh>
+  </firewall>
+  <kexec_reboot config:type="boolean">true</kexec_reboot>
+  <general>
+    <ask-list config:type="list"/>
+    <mode>
+      <confirm config:type="boolean">false</confirm>
+      <final_halt config:type="boolean">false</final_halt>
+      <final_reboot config:type="boolean">false</final_reboot>
+      <halt config:type="boolean">false</halt>
+      <second_stage config:type="boolean">true</second_stage>
+    </mode>
+    <mouse>
+      <id>none</id>
+    </mouse>
+    <proposals config:type="list"/>
+    <signature-handling>
+      <accept_file_without_checksum config:type="boolean">false</accept_file_without_checksum>
+      <accept_non_trusted_gpg_key config:type="boolean">false</accept_non_trusted_gpg_key>
+      <accept_unknown_gpg_key config:type="boolean">false</accept_unknown_gpg_key>
+      <accept_unsigned_file config:type="boolean">false</accept_unsigned_file>
+      <accept_verification_failed config:type="boolean">false</accept_verification_failed>
+      <import_gpg_key config:type="boolean">false</import_gpg_key>
+    </signature-handling>
+    <storage/>
+  </general>
+  <groups config:type="list"/>
+  <login_settings/>
+  <networking>
+    <dhcp_options>
+      <dhclient_client_id></dhclient_client_id>
+      <dhclient_hostname_option>AUTO</dhclient_hostname_option>
+    </dhcp_options>
+    <dns>
+      <dhcp_hostname config:type="boolean">true</dhcp_hostname>
+      <resolv_conf_policy></resolv_conf_policy>
+      <write_hostname config:type="boolean">false</write_hostname>
+    </dns>
+    <interfaces config:type="list">
+      <interface>
+        <bootproto>dhcp</bootproto>
+        <device>eth0</device>
+        <startmode>auto</startmode>
+        <usercontrol>no</usercontrol>
+      </interface>
+    </interfaces>
+    <ipv6 config:type="boolean">true</ipv6>
+    <keep_install_network config:type="boolean">false</keep_install_network>
+    <managed config:type="boolean">false</managed>
+    <routing>
+      <ip_forward config:type="boolean">false</ip_forward>
+    </routing>
+  </networking>
+  <ntp-client>
+    <peers config:type="list"/>
+    <peer>
+      <address>ntp1.example.com</address>
+      <initial_sync config:type="boolean">true</initial_sync>
+      <options></options>
+      <type>server</type>
+    </peer>
+    <start_at_boot config:type="boolean">true</start_at_boot>
+    <start_in_chroot config:type="boolean">true</start_in_chroot>
+    <sync_interval config:type="integer">5</sync_interval>
+    <synchronize_time config:type="boolean">false</synchronize_time>
+  </ntp-client>
+  <partitioning config:type="list">
+    <drive>
+      <initialize config:type="boolean">true</initialize>
+      <partitions config:type="list"/>
+      <pesize></pesize>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
+    </drive>
+  </partitioning>
+  <proxy>
+    <enabled config:type="boolean">false</enabled>
+    <ftp_proxy></ftp_proxy>
+    <http_proxy></http_proxy>
+    <https_proxy></https_proxy>
+    <no_proxy>localhost</no_proxy>
+    <proxy_password></proxy_password>
+    <proxy_user></proxy_user>
+  </proxy>
+  <software>
+    <kernel>kernel-default</kernel>
+    <packages config:type="list">
+      <package>autoyast2-installation</package>
+      <package>tcpdump</package>
+    </packages>
+    <patterns config:type="list">
+      <pattern>base</pattern>
+      <pattern>enhanced_base</pattern>
+    </patterns>
+    <do_online_update config:type="boolean">true</do_online_update>
+  </software>
+  <user_defaults>
+    <expire></expire>
+    <group>100</group>
+    <home>/home</home>
+    <inactive>-1</inactive>
+    <shell>/bin/bash</shell>
+    <skel>/etc/skel</skel>
+    <umask>022</umask>
+  </user_defaults>
+  <users config:type="list">
+    <user>
+      <username>root</username>
+      <user_password>$6$Z7EBhuJC.kf2$ChSxQza4eE3epvu9X9zeyzjKJqnwJZ6I82CZCZ.GSMQHmRH5xNxiAWUOE2rWdVM46AgC1DOp.DqbZSqXsJdOb1</user_password>
+      <encrypted config:type="boolean">true</encrypted>
+      <forename/>
+      <surname/>
+    </user>
+  </users>
+  <scripts>
+    <init-scripts config:type="list">
+      <script>
+        <filename>enable-sshd.sh</filename>
+        <interpreter>shell</interpreter>
+        <source><![CDATA[
+#!/bin/sh
+insserv sshd
+rcsshd start
+]]>
+        </source>
+      </script> 
+    </init-scripts>
+  </scripts>
+</profile>

@@ -7,6 +7,6 @@
     ]
   },
   "run_list": [
-    "role[rabbitmq-server]", "role[keystone]", "recipe[cloudbuilder]"
+    "role[rabbitmq-server]", "role[keystone]", "role[quantum]", "recipe[cloudbuilder]"
   ]
 }
